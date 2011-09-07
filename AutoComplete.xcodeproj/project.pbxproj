@@ -1,0 +1,267 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7D562F10141836E800787D51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D562F0F141836E800787D51 /* UIKit.framework */; };
+		7D562F12141836E800787D51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D562F11141836E800787D51 /* Foundation.framework */; };
+		7D562F14141836E800787D51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D562F13141836E800787D51 /* CoreGraphics.framework */; };
+		7D562F1A141836E800787D51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D562F18141836E800787D51 /* InfoPlist.strings */; };
+		7D562F1D141836E800787D51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F1C141836E800787D51 /* main.m */; };
+		7D562F20141836E800787D51 /* AutoCompleteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */; };
+		7D562F23141836E800787D51 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D562F21141836E800787D51 /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7D562F0B141836E800787D51 /* AutoComplete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoComplete.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D562F0F141836E800787D51 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7D562F11141836E800787D51 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7D562F13141836E800787D51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7D562F17141836E800787D51 /* AutoComplete-Info.plist */ = {isa = PBXFileReference; path = "AutoComplete-Info.plist"; sourceTree = "<group>"; };
+		7D562F19141836E800787D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7D562F1B141836E800787D51 /* AutoComplete-Prefix.pch */ = {isa = PBXFileReference; path = "AutoComplete-Prefix.pch"; sourceTree = "<group>"; };
+		7D562F1C141836E800787D51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7D562F1E141836E800787D51 /* AutoCompleteAppDelegate.h */ = {isa = PBXFileReference; path = AutoCompleteAppDelegate.h; sourceTree = "<group>"; };
+		7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoCompleteAppDelegate.m; sourceTree = "<group>"; };
+		7D562F22141836E800787D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7D562F08141836E800787D51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D562F10141836E800787D51 /* UIKit.framework in Frameworks */,
+				7D562F12141836E800787D51 /* Foundation.framework in Frameworks */,
+				7D562F14141836E800787D51 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7D562F00141836E800787D51 = {
+			isa = PBXGroup;
+			children = (
+				7D562F15141836E800787D51 /* AutoComplete */,
+				7D562F0E141836E800787D51 /* Frameworks */,
+				7D562F0C141836E800787D51 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7D562F0C141836E800787D51 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7D562F0B141836E800787D51 /* AutoComplete.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7D562F0E141836E800787D51 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D562F0F141836E800787D51 /* UIKit.framework */,
+				7D562F11141836E800787D51 /* Foundation.framework */,
+				7D562F13141836E800787D51 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D562F15141836E800787D51 /* AutoComplete */ = {
+			isa = PBXGroup;
+			children = (
+				7D562F1E141836E800787D51 /* AutoCompleteAppDelegate.h */,
+				7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */,
+				7D562F21141836E800787D51 /* MainWindow.xib */,
+				7D562F16141836E800787D51 /* Supporting Files */,
+			);
+			path = AutoComplete;
+			sourceTree = "<group>";
+		};
+		7D562F16141836E800787D51 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7D562F17141836E800787D51 /* AutoComplete-Info.plist */,
+				7D562F18141836E800787D51 /* InfoPlist.strings */,
+				7D562F1B141836E800787D51 /* AutoComplete-Prefix.pch */,
+				7D562F1C141836E800787D51 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7D562F0A141836E800787D51 /* AutoComplete */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7D562F26141836E800787D51 /* Build configuration list for PBXNativeTarget "AutoComplete" */;
+			buildPhases = (
+				7D562F07141836E800787D51 /* Sources */,
+				7D562F08141836E800787D51 /* Frameworks */,
+				7D562F09141836E800787D51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutoComplete;
+			productName = AutoComplete;
+			productReference = 7D562F0B141836E800787D51 /* AutoComplete.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7D562F02141836E800787D51 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 7D562F05141836E800787D51 /* Build configuration list for PBXProject "AutoComplete" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7D562F00141836E800787D51;
+			productRefGroup = 7D562F0C141836E800787D51 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7D562F0A141836E800787D51 /* AutoComplete */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7D562F09141836E800787D51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D562F1A141836E800787D51 /* InfoPlist.strings in Resources */,
+				7D562F23141836E800787D51 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7D562F07141836E800787D51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7D562F1D141836E800787D51 /* main.m in Sources */,
+				7D562F20141836E800787D51 /* AutoCompleteAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7D562F18141836E800787D51 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D562F19141836E800787D51 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7D562F21141836E800787D51 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D562F22141836E800787D51 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7D562F24141836E800787D51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		7D562F25141836E800787D51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		7D562F27141836E800787D51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutoComplete/AutoComplete-Prefix.pch";
+				INFOPLIST_FILE = "AutoComplete/AutoComplete-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7D562F28141836E800787D51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AutoComplete/AutoComplete-Prefix.pch";
+				INFOPLIST_FILE = "AutoComplete/AutoComplete-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7D562F05141836E800787D51 /* Build configuration list for PBXProject "AutoComplete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D562F24141836E800787D51 /* Debug */,
+				7D562F25141836E800787D51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7D562F26141836E800787D51 /* Build configuration list for PBXNativeTarget "AutoComplete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7D562F27141836E800787D51 /* Debug */,
+				7D562F28141836E800787D51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7D562F02141836E800787D51 /* Project object */;
+}
