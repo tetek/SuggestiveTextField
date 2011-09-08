@@ -14,6 +14,8 @@
 		7D562F1D141836E800787D51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F1C141836E800787D51 /* main.m */; };
 		7D562F20141836E800787D51 /* AutoCompleteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */; };
 		7D562F23141836E800787D51 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D562F21141836E800787D51 /* MainWindow.xib */; };
+		7D562F3E14183F9C00787D51 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F3D14183F9C00787D51 /* ViewController.m */; };
+		7D562F42141843CB00787D51 /* OptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F41141843CB00787D51 /* OptionsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +23,17 @@
 		7D562F0F141836E800787D51 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7D562F11141836E800787D51 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7D562F13141836E800787D51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		7D562F17141836E800787D51 /* AutoComplete-Info.plist */ = {isa = PBXFileReference; path = "AutoComplete-Info.plist"; sourceTree = "<group>"; };
+		7D562F17141836E800787D51 /* AutoComplete-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AutoComplete-Info.plist"; sourceTree = "<group>"; };
 		7D562F19141836E800787D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7D562F1B141836E800787D51 /* AutoComplete-Prefix.pch */ = {isa = PBXFileReference; path = "AutoComplete-Prefix.pch"; sourceTree = "<group>"; };
+		7D562F1B141836E800787D51 /* AutoComplete-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AutoComplete-Prefix.pch"; sourceTree = "<group>"; };
 		7D562F1C141836E800787D51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7D562F1E141836E800787D51 /* AutoCompleteAppDelegate.h */ = {isa = PBXFileReference; path = AutoCompleteAppDelegate.h; sourceTree = "<group>"; };
+		7D562F1E141836E800787D51 /* AutoCompleteAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoCompleteAppDelegate.h; sourceTree = "<group>"; };
 		7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoCompleteAppDelegate.m; sourceTree = "<group>"; };
 		7D562F22141836E800787D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		7D562F3C14183F9C00787D51 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7D562F3D14183F9C00787D51 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7D562F40141843CB00787D51 /* OptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsController.h; sourceTree = "<group>"; };
+		7D562F41141843CB00787D51 /* OptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,10 @@
 			children = (
 				7D562F1E141836E800787D51 /* AutoCompleteAppDelegate.h */,
 				7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */,
+				7D562F3C14183F9C00787D51 /* ViewController.h */,
+				7D562F3D14183F9C00787D51 /* ViewController.m */,
+				7D562F40141843CB00787D51 /* OptionsController.h */,
+				7D562F41141843CB00787D51 /* OptionsController.m */,
 				7D562F21141836E800787D51 /* MainWindow.xib */,
 				7D562F16141836E800787D51 /* Supporting Files */,
 			);
@@ -154,6 +164,8 @@
 			files = (
 				7D562F1D141836E800787D51 /* main.m in Sources */,
 				7D562F20141836E800787D51 /* AutoCompleteAppDelegate.m in Sources */,
+				7D562F3E14183F9C00787D51 /* ViewController.m in Sources */,
+				7D562F42141843CB00787D51 /* OptionsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +272,7 @@
 				7D562F28141836E800787D51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
