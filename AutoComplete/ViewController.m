@@ -10,10 +10,10 @@
 
 
 @implementation ViewController
-
+@synthesize searchField, sugMenu;
 -(id)init{
     if ((self=[super init])) {
-        searchField = [[UITextField alloc] initWithFrame:CGRectMake([self.view bounds].size.width/2-150, 200, 300, 30)];
+        self.searchField = [[UITextField alloc] initWithFrame:CGRectMake([self.view bounds].size.width/2-150, 200, 300, 30)];
         [searchField setBorderStyle:UITextBorderStyleLine];
         [searchField setTextAlignment:UITextAlignmentCenter];
         [searchField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
@@ -23,7 +23,7 @@
         [self.view addSubview:searchField];
         NSArray *array = [NSArray arrayWithObjects:@"Dul",@"Hana",@"Net",@"Set", nil];
 
-        sugMenu = [[SuggestionMenu alloc] initWithSortedArray:array];
+        self.sugMenu = [[SuggestionMenu alloc] initWithSortedArray:array];
         
     }
     return self;
@@ -41,6 +41,8 @@
 }
 - (void)dealloc
 {
+    [searchField release];
+    [sugMenu release];
     [super dealloc];
 }
 

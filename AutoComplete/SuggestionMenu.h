@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface SuggestionMenu : UITableViewController {
-    UITextField *activeTextField;
+    
 }
 -(id)initWithSortedArray:(NSArray*)array;
 -(void)suggestForText:(NSString *)text inField:(UITextField*)field;
 @property(retain)NSArray *sortedStringsArray;
 @property(retain)NSArray *matchedStrings;
 @property(retain)UIPopoverController *popOver;
+@property(retain)UITextField *activeTextField;
 
 @end

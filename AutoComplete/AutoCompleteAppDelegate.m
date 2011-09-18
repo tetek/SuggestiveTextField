@@ -16,7 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    ViewController *mainController = [[[ViewController alloc] init] autorelease];
+    ViewController *mainController = [[ViewController alloc] init];
     [self.window addSubview:mainController.view];
     [self.window makeKeyAndVisible];
     return YES;

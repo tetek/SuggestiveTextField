@@ -10,7 +10,7 @@
 
 
 @implementation SuggestionMenu
-@synthesize sortedStringsArray, matchedStrings, popOver;
+@synthesize sortedStringsArray, matchedStrings, popOver, activeTextField;
 - (id)initWithSortedArray:(NSArray*)array
 {
     self = [super init];
@@ -24,11 +24,11 @@
 }
 -(void)matchString:(NSString *)letters {
     if ( sortedStringsArray != nil ) {
-        NSComparator compareStuff2 = ^(id obj1, id obj2) {    
+        NSComparator comparator = ^(id obj1, id obj2) {    
             return [obj1 compare: obj2 options:NSCaseInsensitiveSearch range:NSMakeRange(0, [letters length]) locale:[NSLocale currentLocale] ];
         };
-        int start = [sortedStringsArray indexOfObject:letters inSortedRange:NSMakeRange(0, [sortedStringsArray count]) options:NSBinarySearchingFirstEqual usingComparator:compareStuff2];
-        int end = [sortedStringsArray indexOfObject:letters inSortedRange:NSMakeRange(0, [sortedStringsArray count]) options:NSBinarySearchingLastEqual usingComparator:compareStuff2];
+        int start = [sortedStringsArray indexOfObject:letters inSortedRange:NSMakeRange(0, [sortedStringsArray count]) options:NSBinarySearchingFirstEqual usingComparator:comparator];
+        int end = [sortedStringsArray indexOfObject:letters inSortedRange:NSMakeRange(0, [sortedStringsArray count]) options:NSBinarySearchingLastEqual usingComparator:comparator];
         if (!(start > [sortedStringsArray count] || end > [sortedStringsArray count]))
             self.matchedStrings = [sortedStringsArray subarrayWithRange:NSMakeRange(start, end-start + 1)];
     }
@@ -47,7 +47,7 @@
 -(void)suggestForText:(NSString *)text inField:(UITextField*)field{
     [self matchString:text];
     [self showPopOverListFor:field];
-    activeTextField = field;
+    self.activeTextField = field;
 }
 - (void)dealloc
 {
@@ -178,8 +178,8 @@
 
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [activeTextField setText:[self.matchedStrings objectAtIndex:indexPath.row]];
-    [popOver dismissPopoverAnimated:YES];
+    [self.activeTextField setText:[self.matchedStrings objectAtIndex:indexPath.row]];
+    [self.popOver dismissPopoverAnimated:YES];
 }
 
 

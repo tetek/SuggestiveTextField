@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OptionsController.h"
 #import "SuggestionMenu.h"
 
 @interface ViewController : UIViewController <UITextFieldDelegate> {
     UITextField *searchField;
     SuggestionMenu *sugMenu;
 }
-
+@property(retain)UITextField *searchField;
+@property(retain)SuggestionMenu *sugMenu;
 @end
