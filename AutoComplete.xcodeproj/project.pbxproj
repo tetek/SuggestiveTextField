@@ -15,7 +15,7 @@
 		7D562F20141836E800787D51 /* AutoCompleteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */; };
 		7D562F23141836E800787D51 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D562F21141836E800787D51 /* MainWindow.xib */; };
 		7D562F3E14183F9C00787D51 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F3D14183F9C00787D51 /* ViewController.m */; };
-		7D562F42141843CB00787D51 /* OptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F41141843CB00787D51 /* OptionsController.m */; };
+		7DA741B51426A550007C77A0 /* SuggestionMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA741B41426A550007C77A0 /* SuggestionMenu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +32,8 @@
 		7D562F22141836E800787D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		7D562F3C14183F9C00787D51 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7D562F3D14183F9C00787D51 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		7D562F40141843CB00787D51 /* OptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsController.h; sourceTree = "<group>"; };
-		7D562F41141843CB00787D51 /* OptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsController.m; sourceTree = "<group>"; };
+		7DA741B31426A550007C77A0 /* SuggestionMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionMenu.h; sourceTree = "<group>"; };
+		7DA741B41426A550007C77A0 /* SuggestionMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionMenu.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +84,8 @@
 				7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */,
 				7D562F3C14183F9C00787D51 /* ViewController.h */,
 				7D562F3D14183F9C00787D51 /* ViewController.m */,
-				7D562F40141843CB00787D51 /* OptionsController.h */,
-				7D562F41141843CB00787D51 /* OptionsController.m */,
+				7DA741B31426A550007C77A0 /* SuggestionMenu.h */,
+				7DA741B41426A550007C77A0 /* SuggestionMenu.m */,
 				7D562F21141836E800787D51 /* MainWindow.xib */,
 				7D562F16141836E800787D51 /* Supporting Files */,
 			);
@@ -165,7 +165,7 @@
 				7D562F1D141836E800787D51 /* main.m in Sources */,
 				7D562F20141836E800787D51 /* AutoCompleteAppDelegate.m in Sources */,
 				7D562F3E14183F9C00787D51 /* ViewController.m in Sources */,
-				7D562F42141843CB00787D51 /* OptionsController.m in Sources */,
+				7DA741B51426A550007C77A0 /* SuggestionMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,7 @@
 //  AutoComplete
 //
 //  Created by Wojciech Mandrysz on 08/09/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 http://blog.idevs.pl . All rights reserved.
 //
 
 #import "ViewController.h"
@@ -21,10 +21,24 @@
         [searchField setPlaceholder:@"Your input goes here..."];
         [searchField setDelegate:self];
         [self.view addSubview:searchField];
+        NSArray *array = [NSArray arrayWithObjects:@"Dul",@"Hana",@"Net",@"Set", nil];
+
+        sugMenu = [[SuggestionMenu alloc] initWithSortedArray:array];
+        
     }
     return self;
 }
 
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    [sugMenu suggestForText:@"" inField:textField];
+    
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSString *rightText = [NSString stringWithFormat:@"%@%@",textField.text,string];
+    [sugMenu suggestForText:rightText inField:textField];
+    return YES;
+}
 - (void)dealloc
 {
     [super dealloc];
@@ -51,7 +65,6 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
-    NSLog(@"JO");
     [super viewDidLoad];
 }
 

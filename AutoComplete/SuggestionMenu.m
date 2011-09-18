@@ -1,15 +1,15 @@
 //
-//  OptionsController.m
+//  SuggestionMenu.m
 //  AutoComplete
 //
-//  Created by Wojciech Mandrysz on 08/09/2011.
+//  Created by Wojciech Mandrysz on 19/09/2011.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "OptionsController.h"
+#import "SuggestionMenu.h"
 
 
-@implementation OptionsController
+@implementation SuggestionMenu
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
