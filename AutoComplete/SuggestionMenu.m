@@ -3,25 +3,57 @@
 //  AutoComplete
 //
 //  Created by Wojciech Mandrysz on 19/09/2011.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 http://blog.idevs.pl . All rights reserved.
 //
 
 #import "SuggestionMenu.h"
 
 
 @implementation SuggestionMenu
-
-- (id)initWithStyle:(UITableViewStyle)style
+@synthesize sortedStringsArray, matchedStrings, popOver;
+- (id)initWithSortedArray:(NSArray*)array
 {
-    self = [super initWithStyle:style];
+    self = [super init];
     if (self) {
-        // Custom initialization
+        self.sortedStringsArray = array;
+        self.popOver = [[UIPopoverController alloc] initWithContentViewController:self];
+        self.popOver.popoverContentSize = CGSizeMake(250, 260);
+        self.matchedStrings = [NSArray array];
     }
     return self;
 }
-
+-(void)matchString:(NSString *)letters {
+    if ( sortedStringsArray != nil ) {
+        NSComparator compareStuff2 = ^(id obj1, id obj2) {    
+            return [obj1 compare: obj2 options:NSCaseInsensitiveSearch range:NSMakeRange(0, [letters length]) locale:[NSLocale currentLocale] ];
+        };
+        int start = [sortedStringsArray indexOfObject:letters inSortedRange:NSMakeRange(0, [sortedStringsArray count]) options:NSBinarySearchingFirstEqual usingComparator:compareStuff2];
+        int end = [sortedStringsArray indexOfObject:letters inSortedRange:NSMakeRange(0, [sortedStringsArray count]) options:NSBinarySearchingLastEqual usingComparator:compareStuff2];
+        if (!(start > [sortedStringsArray count] || end > [sortedStringsArray count]))
+            self.matchedStrings = [sortedStringsArray subarrayWithRange:NSMakeRange(start, end-start + 1)];
+    }
+    [self.tableView reloadData];
+}
+-(void)showPopOverListFor:(UITextField*)textField{
+    UIPopoverArrowDirection arrowDirection = UIPopoverArrowDirectionUp;
+    if ([self.matchedStrings count] == 0) {
+        [popOver dismissPopoverAnimated:YES];
+    }
+    else if(!popOver.isPopoverVisible){
+            [popOver presentPopoverFromRect:textField.frame inView:textField.superview permittedArrowDirections:arrowDirection animated:YES];
+        
+    }
+}
+-(void)suggestForText:(NSString *)text inField:(UITextField*)field{
+    [self matchString:text];
+    [self showPopOverListFor:field];
+    activeTextField = field;
+}
 - (void)dealloc
 {
+    [sortedStringsArray release];
+    [matchedStrings release];
+    [popOver release];
     [super dealloc];
 }
 
@@ -83,16 +115,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.matchedStrings count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,7 +132,7 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
+    cell.textLabel.text = [self.matchedStrings objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -149,17 +177,10 @@
 */
 
 #pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [activeTextField setText:[self.matchedStrings objectAtIndex:indexPath.row]];
+    [popOver dismissPopoverAnimated:YES];
 }
+
 
 @end
