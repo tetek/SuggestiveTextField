@@ -1,7 +1,5 @@
-**iPad auto-complete system.    **        
+***Suggestions List PopOver for iPad*** 
 
-SuggestionMenu.h and SuggestionMenu.m is everything you need.  
+Simply copy SuggestionsList class to your project and use as in ViewController.h example.
 
-Import it and use as in the ViewContoller.m      
-
-[Visit my blog](http://blog.idevs.pl   "blog")
+[Visit my blog](http://tetek.me   "blog")

@@ -3,7 +3,7 @@
 //  AutoComplete
 //
 //  Created by Wojciech Mandrysz on 08/09/2011.
-//  Copyright 2011 http://blog.idevs.pl . All rights reserved.
+//  Copyright 2011 http://tetek.me . All rights reserved.
 //
 
 #import "AutoCompleteAppDelegate.h"
@@ -16,8 +16,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    ViewController *mainController = [[ViewController alloc] init];
-    [self.window addSubview:mainController.view];
+    ViewController *mainController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
+    [self.window setRootViewController:mainController];
     [self.window makeKeyAndVisible];
     return YES;
 }
