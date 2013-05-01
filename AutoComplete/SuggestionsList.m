@@ -27,7 +27,7 @@
         self.matchedStrings = [NSArray array];
         
         //Initializing PopOver
-        self.popOver = [[[UIPopoverController alloc] initWithContentViewController:self] autorelease];
+        self.popOver = [[UIPopoverController alloc] initWithContentViewController:self];
         self.popOver.popoverContentSize = CGSizeMake(POPOVER_WIDTH, POPOVER_HEIGHT);
     }
     return self;
@@ -40,9 +40,10 @@
         @throw [NSException exceptionWithName:@"Please set an array to stringsArray" reason:@"No array specified" userInfo:nil];
     }
     
-    self.matchedStrings = [_stringsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self beginswith[cd] %@",letters]];
+    self.matchedStrings = [_stringsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self contains[cd] %@",letters]];
     [self.tableView reloadData];
 }
+
 -(void)showPopOverListFor:(UITextField*)textField{
     UIPopoverArrowDirection arrowDirection = UIPopoverArrowDirectionUp;
     if ([self.matchedStrings count] == 0) {
@@ -87,7 +88,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     cell.textLabel.text = [self.matchedStrings objectAtIndex:indexPath.row];
@@ -103,14 +104,6 @@
 {
     // Return YES for supported orientations
     return YES;
-}
-
-- (void)dealloc
-{
-    self.stringsArray = nil;
-    self.matchedStrings = nil;
-    self.popOver = nil;
-    [super dealloc];
 }
 
 @end
