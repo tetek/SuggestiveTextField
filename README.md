@@ -1,8 +1,11 @@
-***Suggestions List PopOver for iPad*** 
+**SuggestiveTextField for iPad**
 
-Simply copy SuggestionsList class to your project and use as in ViewController.h example.
+SuggestiveTextField is a textfield that presents suggestions based on user input.
 
-[Visit my blog](http://tetek.wordpress.com   "blog")
+Suggestions are being displayes in a UIPopoverController.
+
+Simply copy SuggestiveTextField class to your project and use as in ViewController.h example.
+
 
 **License**
 
