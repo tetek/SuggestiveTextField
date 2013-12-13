@@ -15,6 +15,8 @@ SuggestiveTextField *textField = [SuggestiveTextField alloc] initWithFrame:CGRec
 textField.shouldHideOnSelection = YES; //default is NO
 [textField setPopoverSize:CGSizeMake(100,100)];
 ```
+ 
+![screenshot](https://github.com/tetek/SuggestiveTextField/blob/master/screenshot.png?raw=true "Screenshot")
 
 Simply copy SuggestiveTextField class to your project and use as in ViewController.h example.
 
