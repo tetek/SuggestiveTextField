@@ -48,15 +48,18 @@
 
 - (void)setup{
 
-        self.matchedStrings = [NSArray array];
-        
-        self.controller = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-        _controller.tableView.delegate = self;
-        _controller.tableView.dataSource = self;
+    self.delegate = self;
+    
+    self.matchedStrings = [NSArray array];
+    self.controller = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    _controller.tableView.delegate = self;
+    _controller.tableView.dataSource = self;
 
-        self.popOver = [[UIPopoverController alloc] initWithContentViewController:_controller];
-        _popOver.popoverContentSize = DEFAULT_POPOVER_SIZE;
-        self.delegate = self;
+    self.popOver = [[UIPopoverController alloc] initWithContentViewController:_controller];
+    
+    // Default values
+    _popOver.popoverContentSize = DEFAULT_POPOVER_SIZE;
+    self.shouldHideOnSelection = YES;
 }
 
 #pragma mark - Modifiers

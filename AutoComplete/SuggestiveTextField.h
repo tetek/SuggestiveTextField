@@ -10,9 +10,13 @@
 
 @interface SuggestiveTextField : UITextField <UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate>
 
+// Set suggestions list of NSString's.
 - (void)setSuggestions:(NSArray*)suggestionStrings;
+
+// Set Custom popover size.
 - (void)setPopoverSize:(CGSize)size;
 
+// Define if popover should hide after user selects a suggestion.
 @property BOOL shouldHideOnSelection;
 
 @end
