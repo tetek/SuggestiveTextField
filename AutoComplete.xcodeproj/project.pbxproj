@@ -12,10 +12,9 @@
 		7D562F14141836E800787D51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D562F13141836E800787D51 /* CoreGraphics.framework */; };
 		7D562F1A141836E800787D51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7D562F18141836E800787D51 /* InfoPlist.strings */; };
 		7D562F1D141836E800787D51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F1C141836E800787D51 /* main.m */; };
-		7D562F20141836E800787D51 /* AutoCompleteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */; };
-		7D562F23141836E800787D51 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D562F21141836E800787D51 /* MainWindow.xib */; };
+		7D562F20141836E800787D51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F1F141836E800787D51 /* AppDelegate.m */; };
 		7D562F3E14183F9C00787D51 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F3D14183F9C00787D51 /* ViewController.m */; };
-		7DA741B51426A550007C77A0 /* SuggestionsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA741B41426A550007C77A0 /* SuggestionsList.m */; };
+		7DA741B51426A550007C77A0 /* SuggestiveTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA741B41426A550007C77A0 /* SuggestiveTextField.m */; };
 		7DC20996157EAD3E004FCDBD /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DC20995157EAD3E004FCDBD /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -28,13 +27,12 @@
 		7D562F19141836E800787D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7D562F1B141836E800787D51 /* AutoComplete-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AutoComplete-Prefix.pch"; sourceTree = "<group>"; };
 		7D562F1C141836E800787D51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7D562F1E141836E800787D51 /* AutoCompleteAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoCompleteAppDelegate.h; sourceTree = "<group>"; };
-		7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoCompleteAppDelegate.m; sourceTree = "<group>"; };
-		7D562F22141836E800787D51 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		7D562F1E141836E800787D51 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7D562F1F141836E800787D51 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7D562F3C14183F9C00787D51 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7D562F3D14183F9C00787D51 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		7DA741B31426A550007C77A0 /* SuggestionsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionsList.h; sourceTree = "<group>"; };
-		7DA741B41426A550007C77A0 /* SuggestionsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionsList.m; sourceTree = "<group>"; };
+		7DA741B31426A550007C77A0 /* SuggestiveTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestiveTextField.h; sourceTree = "<group>"; };
+		7DA741B41426A550007C77A0 /* SuggestiveTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestiveTextField.m; sourceTree = "<group>"; };
 		7DC20995157EAD3E004FCDBD /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,14 +80,13 @@
 		7D562F15141836E800787D51 /* AutoComplete */ = {
 			isa = PBXGroup;
 			children = (
-				7D562F1E141836E800787D51 /* AutoCompleteAppDelegate.h */,
-				7D562F1F141836E800787D51 /* AutoCompleteAppDelegate.m */,
+				7D562F1E141836E800787D51 /* AppDelegate.h */,
+				7D562F1F141836E800787D51 /* AppDelegate.m */,
 				7D562F3C14183F9C00787D51 /* ViewController.h */,
 				7D562F3D14183F9C00787D51 /* ViewController.m */,
-				7DA741B31426A550007C77A0 /* SuggestionsList.h */,
-				7DA741B41426A550007C77A0 /* SuggestionsList.m */,
+				7DA741B31426A550007C77A0 /* SuggestiveTextField.h */,
+				7DA741B41426A550007C77A0 /* SuggestiveTextField.m */,
 				7DC20995157EAD3E004FCDBD /* ViewController.xib */,
-				7D562F21141836E800787D51 /* MainWindow.xib */,
 				7D562F16141836E800787D51 /* Supporting Files */,
 			);
 			path = AutoComplete;
@@ -131,6 +128,8 @@
 /* Begin PBXProject section */
 		7D562F02141836E800787D51 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 7D562F05141836E800787D51 /* Build configuration list for PBXProject "AutoComplete" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -154,7 +153,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D562F1A141836E800787D51 /* InfoPlist.strings in Resources */,
-				7D562F23141836E800787D51 /* MainWindow.xib in Resources */,
 				7DC20996157EAD3E004FCDBD /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,9 +165,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D562F1D141836E800787D51 /* main.m in Sources */,
-				7D562F20141836E800787D51 /* AutoCompleteAppDelegate.m in Sources */,
+				7D562F20141836E800787D51 /* AppDelegate.m in Sources */,
 				7D562F3E14183F9C00787D51 /* ViewController.m in Sources */,
-				7DA741B51426A550007C77A0 /* SuggestionsList.m in Sources */,
+				7DA741B51426A550007C77A0 /* SuggestiveTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,14 +180,6 @@
 				7D562F19141836E800787D51 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		7D562F21141836E800787D51 /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7D562F22141836E800787D51 /* en */,
-			);
-			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -237,8 +227,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoComplete/AutoComplete-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "AutoComplete/AutoComplete-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -250,8 +242,10 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutoComplete/AutoComplete-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "AutoComplete/AutoComplete-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

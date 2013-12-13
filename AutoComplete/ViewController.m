@@ -8,40 +8,26 @@
 
 #import "ViewController.h"
 
+@interface ViewController ()
+
+@property(assign) IBOutlet SuggestiveTextField *textField;
+
+@end
 
 @implementation ViewController
-@synthesize searchField = _searchField;
-@synthesize suggList = _suggList;
-
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    if ((self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
-
-        NSArray *array = [NSArray arrayWithObjects:@"Warsaw",@"Wrocław",@"Malmo",@"Oslo",@"Berlin",@"Amsterdam",@"Praha",@"Paris",@"Barcelona",@"Madrid", nil];
-
-        self.suggList = [[[SuggestionsList alloc] initWithArray:array] autorelease];
-        
-    }
-    return self;
-}
 
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+-(void)viewDidLoad{
+    [super viewDidLoad];
     
-    [_suggList showSuggestionsFor:textField shouldChangeCharactersInRange:range replacementString:string];
-    
-    return YES;
+    //Defining suggestions to use
+    NSArray *array = [NSArray arrayWithObjects:@"Warsaw",@"Wrocław",@"Malmo",@"Oslo",@"Berlin",@"Amsterdam",@"Praha",@"Paris",@"Barcelona",@"Madrid", nil];
+
+    //Assigning to searchfield
+    [_textField setSuggestions:array];
+
 }
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-	return YES;
-}
 
-- (void)dealloc
-{
-    self.suggList = nil;
-    [super dealloc];
-}
 @end

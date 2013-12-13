@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
-@interface AutoCompleteAppDelegate : NSObject <UIApplicationDelegate> {
 
-}
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+
+@property (strong,nonatomic) UIWindow *window;
+
 
 @end

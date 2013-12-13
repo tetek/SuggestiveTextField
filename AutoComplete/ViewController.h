@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SuggestionsList.h"
+#import "SuggestiveTextField.h"
 
-@interface ViewController : UIViewController <UITextFieldDelegate> {
+@interface ViewController : UIViewController <UITextFieldDelegate>
 
-}
-@property(assign) IBOutlet UITextField *searchField;
-@property(retain)SuggestionsList *suggList;
+
+
+
 @end
