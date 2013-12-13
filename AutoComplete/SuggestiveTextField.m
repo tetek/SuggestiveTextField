@@ -59,7 +59,7 @@
     
     // Default values
     _popOver.popoverContentSize = DEFAULT_POPOVER_SIZE;
-    self.shouldHideOnSelection = YES;
+    self.shouldHideOnSelection = NO;
 }
 
 #pragma mark - Modifiers

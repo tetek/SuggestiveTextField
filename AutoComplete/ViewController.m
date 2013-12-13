@@ -21,7 +21,7 @@
     [super viewDidLoad];
     
     //Defining suggestions to use
-    NSArray *array = [NSArray arrayWithObjects:@"Warsaw",@"Wrocław",@"Malmo",@"Oslo",@"Berlin",@"Amsterdam",@"Praha",@"Paris",@"Barcelona",@"Madrid", nil];
+    NSArray *array = @[@"Warsaw",@"Wrocław",@"Malmo",@"Oslo",@"Berlin",@"Amsterdam",@"Praha",@"Paris",@"Barcelona",@"Madrid"];
 
     //Assigning to searchfield
     [_textField setSuggestions:array];
