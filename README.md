@@ -12,7 +12,7 @@ SuggestiveTextField *textField = [SuggestiveTextField alloc] initWithFrame:CGRec
 [textField setSuggestions:suggestions];
 
 //Optional
-textField.shouldHideOnSelection = YES; //default is NO
+textField.shouldHideOnSelection = NO; //default is YES
 [textField setPopoverSize:CGSizeMake(100,100)];
 ```
  
