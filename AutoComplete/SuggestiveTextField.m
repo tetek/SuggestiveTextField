@@ -150,10 +150,12 @@
 
 - (void)tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  [self setText:[_matchedStrings objectAtIndex:indexPath.row]];
-  if (_shouldHideOnSelection) {
-    [_popOver dismissPopoverAnimated:YES];
-  }
+    [self suggestionSelectedAtIndexPath:indexPath];
 }
-
+-(void)suggestionSelectedAtIndexPath:(NSIndexPath*)indexPath{
+    [self setText:[_matchedStrings objectAtIndex:indexPath.row]];
+    if (_shouldHideOnSelection) {
+        [_popOver dismissPopoverAnimated:YES];
+    }
+}
 @end

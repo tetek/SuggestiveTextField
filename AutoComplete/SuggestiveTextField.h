@@ -23,6 +23,8 @@
 // Present PopOver
 - (void)showPopOverList;
 
+-(void)suggestionSelectedAtIndexPath:(NSIndexPath*)indexPath;
+
 // Define if popover should hide after user selects a suggestion.
 @property BOOL shouldHideOnSelection;
 
