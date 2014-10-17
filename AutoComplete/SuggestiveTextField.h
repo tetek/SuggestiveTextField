@@ -20,8 +20,8 @@
 // Filter array and reload TableView
 - (void)matchStrings:(NSString *)letters;
 
-// Present PopOver
-- (void)showPopOverList;
+// Present PopOver or Table View
+- (void)showSuggestionTableView;
 
 // Define if popover should hide after user selects a suggestion.
 @property BOOL shouldHideOnSelection;
