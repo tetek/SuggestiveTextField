@@ -7,14 +7,12 @@
 //
 #import <UIKit/UIKit.h>
 
-@interface SuggestiveTextField
-    : UITextField <UITableViewDataSource,
-                   UITableViewDelegate>
+@interface SuggestiveTextField : UITextField 
 
 // Set suggestions list of NSString's.
 - (void)setSuggestions:(NSArray *)suggestionStrings;
 
-// Set Custom popover size.
+// Set Custom popover size. Maximum popover size, both for iPad and iPhone.
 - (void)setPopoverSize:(CGSize)size;
 
 // Filter array and reload TableView
@@ -22,6 +20,7 @@
 
 // Present PopOver or Table View
 - (void)showSuggestionTableView;
+
 
 - (void)dismissSuggestionTableView;
 

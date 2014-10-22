@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D47809019F7BE440051D4D7 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D47808F19F7BE440051D4D7 /* ViewController.xib */; };
 		7D562F10141836E800787D51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D562F0F141836E800787D51 /* UIKit.framework */; };
 		7D562F12141836E800787D51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D562F11141836E800787D51 /* Foundation.framework */; };
 		7D562F14141836E800787D51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D562F13141836E800787D51 /* CoreGraphics.framework */; };
@@ -15,10 +16,10 @@
 		7D562F20141836E800787D51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F1F141836E800787D51 /* AppDelegate.m */; };
 		7D562F3E14183F9C00787D51 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D562F3D14183F9C00787D51 /* ViewController.m */; };
 		7DA741B51426A550007C77A0 /* SuggestiveTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA741B41426A550007C77A0 /* SuggestiveTextField.m */; };
-		7DC20996157EAD3E004FCDBD /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DC20995157EAD3E004FCDBD /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D47808F19F7BE440051D4D7 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		7D562F0B141836E800787D51 /* AutoComplete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoComplete.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D562F0F141836E800787D51 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7D562F11141836E800787D51 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -33,7 +34,6 @@
 		7D562F3D14183F9C00787D51 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7DA741B31426A550007C77A0 /* SuggestiveTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestiveTextField.h; sourceTree = "<group>"; };
 		7DA741B41426A550007C77A0 /* SuggestiveTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestiveTextField.m; sourceTree = "<group>"; };
-		7DC20995157EAD3E004FCDBD /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 				7D562F3D14183F9C00787D51 /* ViewController.m */,
 				7DA741B31426A550007C77A0 /* SuggestiveTextField.h */,
 				7DA741B41426A550007C77A0 /* SuggestiveTextField.m */,
-				7DC20995157EAD3E004FCDBD /* ViewController.xib */,
+				7D47808F19F7BE440051D4D7 /* ViewController.xib */,
 				7D562F16141836E800787D51 /* Supporting Files */,
 			);
 			path = AutoComplete;
@@ -153,7 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D562F1A141836E800787D51 /* InfoPlist.strings in Resources */,
-				7DC20996157EAD3E004FCDBD /* ViewController.xib in Resources */,
+				7D47809019F7BE440051D4D7 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,10 +8,7 @@
 
 #import "SuggestiveTextField.h"
 
-#define DEFAULT_TABLEVIEW_MAX_WIDTH 300.0
-#define DEFAULT_TABLEVIEW_MAX_HEIGHT 300.0
 #define DEFAULT_ROW_HEIGHT 30.0
-
 
 @interface SuggestiveDelegate : NSObject <UITextFieldDelegate>
 @property(weak) SuggestiveTextField *textField;
@@ -19,20 +16,14 @@
 
 @implementation SuggestiveDelegate
 
-#pragma mark - TextField delegates
+//////////////////////////////////////////////////
+#pragma mark - Handling TextField Delegate
+//////////////////////////////////////////////////
 
-- (BOOL)shouldChangeTextInRange:(UITextRange *)range
-								replacementText:(NSString *)text
-{
-	return YES;
-}
 
-- (BOOL)textField:(UITextField *)textField
-shouldChangeCharactersInRange:(NSRange)range
-replacementString:(NSString *)string
-{
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
 	
-	NSMutableString *text = [NSMutableString stringWithString:textField.text];
+    NSMutableString *text = [NSMutableString stringWithString:textField.text];
 	[text replaceCharactersInRange:range withString:string];
 	
 	[self.textField matchStrings:text];
@@ -42,40 +33,36 @@ replacementString:(NSString *)string
 }
 
 
-- (BOOL)textFieldShouldClear:(UITextField *)textField
-{
+- (BOOL)textFieldShouldClear:(UITextField *)textField{
 	[self.textField dismissSuggestionTableView];
 	return YES;
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
 	return YES;
 }
-
 
 @end
 
 
 
-@interface SuggestiveTextField ()
+@interface SuggestiveTextField () <UITableViewDataSource, UITableViewDelegate>
 
 @property(nonatomic, strong) NSArray *stringsArray;
 @property(nonatomic, strong) NSArray *matchedStrings;
 @property(nonatomic, strong) UITableViewController *controller;
-@property (nonatomic, strong) SuggestiveDelegate *midDelegate;
+@property(nonatomic, strong) SuggestiveDelegate *midDelegate;
 
-// ipad
-@property(nonatomic, strong) UIPopoverController *popOver;
+@property CGSize tableViewMaxSize;
 
-// iphone
-@property (nonatomic) BOOL isTableViewShown;
-
+@property(nonatomic, strong) UIPopoverController *popOver; // iPad
 @end
 
 @implementation SuggestiveTextField
 
+//////////////////////////////////////////////////
 #pragma mark - Setup
+//////////////////////////////////////////////////
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
 
@@ -101,23 +88,27 @@ replacementString:(NSString *)string
 
 - (void)setup {
 
-  self.midDelegate = [SuggestiveDelegate new];
-	self.midDelegate.textField = self;
+    self.midDelegate = [SuggestiveDelegate new];
+    self.midDelegate.textField = self;
 	self.delegate = self.midDelegate;
 
-  self.matchedStrings = [NSArray array];
-  self.controller =
-      [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-  _controller.tableView.delegate = self;
-  _controller.tableView.dataSource = self;
-  self.autocorrectionType = UITextAutocorrectionTypeNo;
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-		self.popOver =
-      [[UIPopoverController alloc] initWithContentViewController:_controller];
-		// Default values
-		_popOver.popoverContentSize = CGSizeMake(DEFAULT_TABLEVIEW_MAX_WIDTH, DEFAULT_TABLEVIEW_MAX_HEIGHT);
- }
-	
+    self.matchedStrings = [NSArray array];
+    self.controller = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.controller.tableView.delegate = self;
+    self.controller.tableView.dataSource = self;
+    
+    self.autocorrectionType = UITextAutocorrectionTypeNo;
+    
+    self.tableViewMaxSize = CGSizeMake(self.frame.size.width, 300);
+    
+    if (self.isiPad) {
+        self.popOver = [[UIPopoverController alloc] initWithContentViewController:self.controller];
+        self.popOver.popoverContentSize = self.tableViewMaxSize;
+    }
+
+    // Default values
+    self.shouldHideOnSelection = YES;
+    
 	// Table view configs
 	self.controller.tableView.backgroundColor = [UIColor whiteColor];
 	self.controller.tableView.layer.cornerRadius = 5;
@@ -129,75 +120,70 @@ replacementString:(NSString *)string
 	self.controller.tableView.showsHorizontalScrollIndicator = NO;
 	self.controller.tableView.rowHeight = DEFAULT_ROW_HEIGHT;
 	self.controller.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Hide the unnecessary separator lines
-	_isTableViewShown = NO;
-	
-   self.shouldHideOnSelection = YES;
 	
 }
 
-
-
-- (void) dismissSuggestionTableView
-{
-	[_popOver dismissPopoverAnimated:YES];
-	[self.controller.tableView removeFromSuperview];
-	_isTableViewShown = NO;
+- (void) dismissSuggestionTableView{
+    if (self.isiPad) {
+        [_popOver dismissPopoverAnimated:YES];
+    }
+    else{
+        [self.controller.tableView removeFromSuperview];
+    }
 }
 
 
+//////////////////////////////////////////////////
 #pragma mark - Modifiers
+//////////////////////////////////////////////////
 
 - (void)setSuggestions:(NSArray *)suggestionStrings {
-  self.stringsArray = suggestionStrings;
+    self.stringsArray = suggestionStrings;
 }
 - (void)setPopoverSize:(CGSize)size {
-  self.popOver.popoverContentSize = size;
+    self.tableViewMaxSize = size;
+    self.popOver.popoverContentSize = size;
 }
 
+//////////////////////////////////////////////////
 #pragma mark - Matching strings and Popover
+//////////////////////////////////////////////////
 
-- (CGFloat)tableHeight
-{
-	return [self.matchedStrings count] * DEFAULT_ROW_HEIGHT > DEFAULT_TABLEVIEW_MAX_HEIGHT ? DEFAULT_TABLEVIEW_MAX_HEIGHT : [self.matchedStrings count] * DEFAULT_ROW_HEIGHT;
+- (CGFloat)tableHeight{
+	return [self.matchedStrings count] * DEFAULT_ROW_HEIGHT > self.tableViewMaxSize.height ? self.tableViewMaxSize.height : [self.matchedStrings count] * DEFAULT_ROW_HEIGHT;
 }
 
 - (void)updateTableViewFrameHeight
 {
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+	if (!self.isiPad) {
 		CGRect currentFrame = self.controller.tableView.frame;
 		currentFrame.size.height = [self tableHeight];
 		self.controller.tableView.frame = currentFrame;
 	}
-	else
-	{
-		[self setPopoverSize: CGSizeMake(DEFAULT_TABLEVIEW_MAX_WIDTH, [self tableHeight])];
+	else{
+		[self setPopoverSize:CGSizeMake(self.tableViewMaxSize.width, [self tableHeight])];
 	}
 }
 
 - (void)matchStrings:(NSString *)letters {
   if (_stringsArray.count > 0) {
 
-    self.matchedStrings = [_stringsArray
-        filteredArrayUsingPredicate:
-            [NSPredicate predicateWithFormat:@"self contains[cd] %@", letters]];
+    self.matchedStrings = [_stringsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self contains[cd] %@", letters]];
     [_controller.tableView reloadData];
 
-		[self updateTableViewFrameHeight];
+    [self updateTableViewFrameHeight];
   }
 }
 
 - (void)showSuggestionTableView {
-	if (_matchedStrings.count == 0)
-	{
+	if (_matchedStrings.count == 0){
 		[self dismissSuggestionTableView];
 	}
-	else if (!_popOver.isPopoverVisible && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) 	{
-			[_popOver presentPopoverFromRect:self.frame
-																inView:self.superview
-							permittedArrowDirections:UIPopoverArrowDirectionUp
-															animated:YES];
+    
+	else if (!_popOver.isPopoverVisible && self.isiPad){
+			[_popOver presentPopoverFromRect:self.frame inView:self.superview permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 	}
-	else if (!_isTableViewShown && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+	else if (!self.isTableViewVisible && !self.isiPad)
 	{
 		if (!self.referenceView) { // if the reference view is not set, then it has the default window.
 			self.referenceView = self.window;
@@ -210,41 +196,48 @@ replacementString:(NSString *)string
 		self.controller.tableView.frame = rect;
 		[self.referenceView addSubview: self.controller.tableView];
 		
-		_isTableViewShown = YES;
+
 	}
 }
 
+- (BOOL)isTableViewVisible{
+    return self.controller.tableView.superview != nil;
+}
+
+-(BOOL)isiPad{
+    return [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
+}
+
+//////////////////////////////////////////////////
 #pragma mark - TableView Delegate & DataSource
+//////////////////////////////////////////////////
 
-- (NSInteger)tableView:(UITableView *)tableView
-    numberOfRowsInSection:(NSInteger)section {
-  return _matchedStrings.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _matchedStrings.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  static NSString *CellIdentifier = @"Cell";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
 
-  UITableViewCell *cell =
-      [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                  reuseIdentifier:CellIdentifier];
-  }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-  cell.textLabel.text = [_matchedStrings objectAtIndex:indexPath.row];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
 
-  return cell;
+    cell.textLabel.text = [_matchedStrings objectAtIndex:indexPath.row];
+
+    return cell;
 }
 
-- (void)tableView:(UITableView *)tableView
-    didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  [self setText:[_matchedStrings objectAtIndex:indexPath.row]];
-  if (_shouldHideOnSelection) {
-		[self dismissSuggestionTableView];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    [self setText:[_matchedStrings objectAtIndex:indexPath.row]];
+    if (_shouldHideOnSelection) {
+        [self dismissSuggestionTableView];
 		[self resignFirstResponder];
 		
-  }
+    }
 }
 
 @end
