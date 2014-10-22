@@ -8,9 +8,54 @@
 
 #import "SuggestiveTextField.h"
 
-#define DEFAULT_POPOVER_SIZE CGSizeMake(300, 300)
+#define DEFAULT_TABLEVIEW_MAX_WIDTH 300.0
 #define DEFAULT_TABLEVIEW_MAX_HEIGHT 300.0
 #define DEFAULT_ROW_HEIGHT 30.0
+
+
+@interface SuggestiveDelegate : NSObject <UITextFieldDelegate>
+@property(weak) SuggestiveTextField *textField;
+@end
+
+@implementation SuggestiveDelegate
+
+#pragma mark - TextField delegates
+
+- (BOOL)shouldChangeTextInRange:(UITextRange *)range
+								replacementText:(NSString *)text
+{
+	return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+	
+	NSMutableString *text = [NSMutableString stringWithString:textField.text];
+	[text replaceCharactersInRange:range withString:string];
+	
+	[self.textField matchStrings:text];
+	[self.textField showSuggestionTableView];
+	
+	return YES;
+}
+
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+	[self.textField dismissSuggestionTableView];
+	return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+	return YES;
+}
+
+
+@end
+
 
 
 @interface SuggestiveTextField ()
@@ -18,6 +63,7 @@
 @property(nonatomic, strong) NSArray *stringsArray;
 @property(nonatomic, strong) NSArray *matchedStrings;
 @property(nonatomic, strong) UITableViewController *controller;
+@property (nonatomic, strong) SuggestiveDelegate *midDelegate;
 
 // ipad
 @property(nonatomic, strong) UIPopoverController *popOver;
@@ -55,7 +101,9 @@
 
 - (void)setup {
 
-  self.delegate = self;
+  self.midDelegate = [SuggestiveDelegate new];
+	self.midDelegate.textField = self;
+	self.delegate = self.midDelegate;
 
   self.matchedStrings = [NSArray array];
   self.controller =
@@ -63,8 +111,12 @@
   _controller.tableView.delegate = self;
   _controller.tableView.dataSource = self;
   self.autocorrectionType = UITextAutocorrectionTypeNo;
-  self.popOver =
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+		self.popOver =
       [[UIPopoverController alloc] initWithContentViewController:_controller];
+		// Default values
+		_popOver.popoverContentSize = CGSizeMake(DEFAULT_TABLEVIEW_MAX_WIDTH, DEFAULT_TABLEVIEW_MAX_HEIGHT);
+ }
 	
 	// Table view configs
 	self.controller.tableView.backgroundColor = [UIColor whiteColor];
@@ -79,34 +131,11 @@
 	self.controller.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero]; // Hide the unnecessary separator lines
 	_isTableViewShown = NO;
 	
-  // Default values
-  _popOver.popoverContentSize = DEFAULT_POPOVER_SIZE;
-  self.shouldHideOnSelection = YES;
+   self.shouldHideOnSelection = YES;
 	
 }
 
 
-#pragma mark - TextField delegates
-
-- (BOOL)shouldChangeTextInRange:(UITextRange *)range
-								replacementText:(NSString *)text
-{
-	return YES;
-}
-
-- (BOOL)textField:(UITextField *)textField
-shouldChangeCharactersInRange:(NSRange)range
-replacementString:(NSString *)string
-{
-	
-	NSMutableString *text = [NSMutableString stringWithString:textField.text];
-	[text replaceCharactersInRange:range withString:string];
-	
-	[self matchStrings:text];
-	[self showSuggestionTableView];
-	
-	return YES;
-}
 
 - (void) dismissSuggestionTableView
 {
@@ -115,11 +144,6 @@ replacementString:(NSString *)string
 	_isTableViewShown = NO;
 }
 
-- (BOOL)textFieldShouldClear:(UITextField *)textField
-{
-	[self dismissSuggestionTableView];
-	return YES;
-}
 
 #pragma mark - Modifiers
 
@@ -139,9 +163,15 @@ replacementString:(NSString *)string
 
 - (void)updateTableViewFrameHeight
 {
-	CGRect currentFrame = self.controller.tableView.frame;
-	currentFrame.size.height = [self tableHeight];
-	self.controller.tableView.frame = currentFrame;
+	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+		CGRect currentFrame = self.controller.tableView.frame;
+		currentFrame.size.height = [self tableHeight];
+		self.controller.tableView.frame = currentFrame;
+	}
+	else
+	{
+		[self setPopoverSize: CGSizeMake(DEFAULT_TABLEVIEW_MAX_WIDTH, [self tableHeight])];
+	}
 }
 
 - (void)matchStrings:(NSString *)letters {
@@ -169,11 +199,17 @@ replacementString:(NSString *)string
 	}
 	else if (!_isTableViewShown && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
 	{
+		if (!self.referenceView) { // if the reference view is not set, then it has the default window.
+			self.referenceView = self.window;
+		}
+		CGPoint origin = [self.referenceView convertPoint:self.frame.origin fromView:self.superview];
 		CGRect rect;
-		rect.origin = CGPointMake(self.frame.origin.x, self.frame.origin.y + self.frame.size.height);
+		rect.origin = CGPointMake(origin.x, origin.y + self.frame.size.height);
 		rect.size = CGSizeMake(self.frame.size.width, [self tableHeight]);
+		
 		self.controller.tableView.frame = rect;
-		[self.window addSubview: self.controller.tableView];
+		[self.referenceView addSubview: self.controller.tableView];
+		
 		_isTableViewShown = YES;
 	}
 }
@@ -206,6 +242,8 @@ replacementString:(NSString *)string
   [self setText:[_matchedStrings objectAtIndex:indexPath.row]];
   if (_shouldHideOnSelection) {
 		[self dismissSuggestionTableView];
+		[self resignFirstResponder];
+		
   }
 }
 

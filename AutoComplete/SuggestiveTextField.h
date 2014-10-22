@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SuggestiveTextField
-    : UITextField <UITextFieldDelegate, UITableViewDataSource,
+    : UITextField <UITableViewDataSource,
                    UITableViewDelegate>
 
 // Set suggestions list of NSString's.
@@ -22,6 +22,14 @@
 
 // Present PopOver or Table View
 - (void)showSuggestionTableView;
+
+- (void)dismissSuggestionTableView;
+
+// used for alignment of table view position
+// it should be set to the parent view that contains the text field
+// default: self.window
+@property (nonatomic, strong) UIView *referenceView;
+
 
 // Define if popover should hide after user selects a suggestion.
 @property BOOL shouldHideOnSelection;
