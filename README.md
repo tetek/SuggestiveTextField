@@ -1,4 +1,4 @@
-##SuggestiveTextField for iPad
+## SuggestiveTextField for iPad
 
 
 * It's a `UITextfield` subclass that presents suggestions based on user input.
